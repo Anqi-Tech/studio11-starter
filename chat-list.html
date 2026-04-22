@@ -1,8 +1,0 @@
-<button @click="addChat">Add a chat</button>
-<ul>
-    <li v-for="chat in chats" :key="chat">
-        <button @click="selectedChat = chat">Chat {{ chat }}</button>
-    </li>
-</ul>
-
-<chat v-if="selectedChat" :chat-id="selectedChat"></chat>

@@ -1,6 +1,6 @@
 import { createApp, defineAsyncComponent } from "vue";
 import { createRouter, createWebHashHistory } from "vue-router";
-import { ChatList } from "./chat-list.js";
+import Home from "./home/main.js";
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -10,8 +10,9 @@ const router = createRouter({
 });
 
 createApp({
+  template: "#template",
   components: {
-    ChatList: defineAsyncComponent(ChatList),
+    Home: defineAsyncComponent(Home),
   },
 })
   .use(router)
