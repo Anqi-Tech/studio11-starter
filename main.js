@@ -1,6 +1,9 @@
 import { createApp, defineAsyncComponent } from "vue";
 import { createRouter, createWebHashHistory } from "vue-router";
-import Home from "./home/main.js";
+
+function loadComponent(name) {
+  return () => import(`./${name}.js`).then((m) => m.default);
+}
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -12,7 +15,7 @@ const router = createRouter({
 createApp({
   template: "#template",
   components: {
-    Home: defineAsyncComponent(Home),
+    Home: defineAsyncComponent(loadComponent("home")),
   },
 })
   .use(router)
