@@ -11,14 +11,9 @@ function setup() {
   return { chats, selectedChat, addChat };
 }
 
-export default {
-  template: /* html */ `
-    <button @click="addChat">Add a chat</button>
-    <ul>
-        <li v-for="chatId in chats" :key="chatId">
-            Chat #{{ chatId }}
-        </li>
-    </ul>
-  `,
+export default async () => ({
   setup,
-};
+  template: await fetch(new URL("./index.html", import.meta.url)).then((r) =>
+    r.text(),
+  ),
+});

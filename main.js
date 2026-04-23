@@ -2,7 +2,7 @@ import { createApp, defineAsyncComponent } from "vue";
 import { createRouter, createWebHashHistory } from "vue-router";
 
 function loadComponent(name) {
-  return () => import(`./${name}.js`).then((m) => m.default);
+  return () => import(`./${name}/main.js`).then((m) => m.default());
 }
 
 const router = createRouter({
