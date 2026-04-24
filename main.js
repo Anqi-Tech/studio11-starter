@@ -14,6 +14,7 @@ const router = createRouter({
             component: loadComponent("chat"),
             props: true,
         },
+        { path: "/profile", component: loadComponent("profile") },
     ],
 });
 
