@@ -2,21 +2,26 @@ import { createApp, defineAsyncComponent } from "vue";
 import { createRouter, createWebHashHistory } from "vue-router";
 
 function loadComponent(name) {
-  return () => import(`./${name}/main.js`).then((m) => m.default());
+    return () => import(`./${name}/main.js`).then((m) => m.default());
 }
 
 const router = createRouter({
-  history: createWebHashHistory(),
-  routes: [
-    // Add your routes here
-  ],
+    history: createWebHashHistory(),
+    routes: [
+        { path: "/", component: loadComponent("home") },
+        {
+            path: "/chat/:chatId",
+            component: loadComponent("chat"),
+            props: true,
+        },
+    ],
 });
 
 createApp({
-  template: "#template",
-  components: {
-    Home: defineAsyncComponent(loadComponent("home")),
-  },
+    template: "#template",
+    components: {
+        Home: defineAsyncComponent(loadComponent("home")),
+    },
 })
-  .use(router)
-  .mount("#app");
+    .use(router)
+    .mount("#app");
